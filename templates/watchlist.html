@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Watchlist — Stock Dashboard{% endblock %}
+
+{% block content %}
+<h1>Watchlist</h1>
+
+<div class="card">
+  <h2>Watched Tickers</h2>
+  {% if watchlist %}
+  <div style="overflow-x:auto;">
+    <table aria-label="Watchlist table">
+      <thead>
+        <tr>
+          <th>Ticker</th>
+          <th>Alert Above ($)</th>
+          <th>Alert Below ($)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in watchlist %}
+        <tr>
+          <td style="color:#4fc3f7;font-weight:600;">{{ item.ticker }}</td>
+          <td>{{ "%.2f"|format(item.alert_above) if item.alert_above else "—" }}</td>
+          <td>{{ "%.2f"|format(item.alert_below) if item.alert_below else "—" }}</td>
+          <td>
+            <button class="btn btn-danger btn-remove-watchlist" data-id="{{ item.id }}" aria-label="Remove {{ item.ticker }} from watchlist">
+              Remove
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p style="color:#888;">Your watchlist is empty. Add a ticker below.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Add to Watchlist</h2>
+  <form id="add-watchlist-form" style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <label for="w-ticker" style="color:#888;font-size:12px;">Ticker</label>
+      <input id="w-ticker" type="text" placeholder="TSLA" maxlength="10" style="width:100px;text-transform:uppercase;" required />
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <label for="w-above" style="color:#888;font-size:12px;">Alert Above ($)</label>
+      <input id="w-above" type="number" placeholder="300" min="0" step="any" style="width:120px;" />
+    </div>
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <label for="w-below" style="color:#888;font-size:12px;">Alert Below ($)</label>
+      <input id="w-below" type="number" placeholder="150" min="0" step="any" style="width:120px;" />
+    </div>
+    <button type="submit">Add to Watchlist</button>
+  </form>
+  <p id="add-watchlist-msg" style="margin-top:8px;color:#4fc3f7;font-size:13px;"></p>
+</div>
+{% endblock %}

@@ -1,0 +1,174 @@
+/* ============================================================
+   Stock Dashboard — Accessible Dark Theme
+   Palette: blue #4fc3f7, orange #ff9800, gray #888
+   NO red or green anywhere (user is red-green color blind).
+   Positive P&L → blue (#4fc3f7)
+   Negative P&L → orange (#ff9800)
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d1117;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/* ---- Navigation ---- */
+.nav {
+  background: #1a1a2e;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #333;
+}
+
+.nav-brand {
+  color: #4fc3f7;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nav-link {
+  color: #888;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.15s;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #4fc3f7;
+  outline: 2px solid #4fc3f7;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---- Layout ---- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3 {
+  color: #4fc3f7;
+  margin-bottom: 16px;
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 18px; }
+h3 { font-size: 15px; }
+
+/* ---- Card ---- */
+.card {
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* ---- Tables ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 8px;
+  border-bottom: 1px solid #333;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---- P&L colours (accessible, no red/green) ---- */
+.positive { color: #4fc3f7; }  /* gain  → blue   */
+.negative { color: #ff9800; }  /* loss  → orange */
+
+/* ---- Forms ---- */
+input,
+select {
+  background: #16213e;
+  border: 1px solid #333;
+  color: #e0e0e0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  border-color: #4fc3f7;
+  outline: 2px solid #4fc3f7;
+  outline-offset: 1px;
+}
+
+/* ---- Buttons ---- */
+button,
+.btn {
+  background: #4fc3f7;
+  color: #1a1a2e;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+button:hover,
+.btn:hover {
+  background: #81d4fa;
+}
+
+button:focus,
+.btn:focus {
+  outline: 2px solid #81d4fa;
+  outline-offset: 2px;
+}
+
+/* Danger / remove variant — orange instead of blue */
+.btn-danger {
+  background: #ff9800;
+  color: #1a1a2e;
+}
+
+.btn-danger:hover {
+  background: #ffb74d;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  h1 { font-size: 20px; }
+}

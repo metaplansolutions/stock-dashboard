@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Stock Dashboard{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <span class="nav-brand">Stock Dashboard</span>
+    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a class="nav-link" href="{{ url_for('portfolio') }}">Portfolio</a>
+    <a class="nav-link" href="{{ url_for('watchlist') }}">Watchlist</a>
+  </nav>
+
+  <main class="container" role="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="{{ url_for('static', filename='js/chart.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
